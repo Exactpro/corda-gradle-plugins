@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# update tags
+git fetch -t origin
+
+tagsEM="ENT-HC01 M15-RC01 M15-RC02 M15-RC03 M16-RC01 M16-RC02 M16-RC03 M16-RC04 M17-RC01 M17-RC02 M17-RC03 M18-HC01 M18-HC02 M18-RC01 M18-RC02 M18-RC03 M18.01-RC01 M18.01-RC02 M18.02-RC01 M18.02-RC02"
+
+tagsADPR="artifactory-test docs-head pre-release-V3-branchpoint rg_analytics_testing"
+
+tagsRX="release-M0.0 release-M0.1 release-M1.0 release-M10.0 release-M10.1 release-M11.0 release-M11.1 release-M11.2 release-M12.0 release-M12.1 release-M13.0 release-M14.0 release-M2.0 release-M3.0 release-M4.0 release-M4.1 release-M5.0 release-M6.0 release-M7.0 release-M8.0 release-M8.1 release-M8.2 release-M9.0 release-M9.1 release-M9.2 release-V1.0 release-V2.0 release-V3.0 release-V3.1"
+
+tags40old="release/4.0.0 release/4.0.10 release/4.0.11 release/4.0.12 release/4.0.12-tutorial release/4.0.13 release/4.0.14 release/4.0.15 release/4.0.16 release/4.0.18 release/4.0.19 release/4.0.2 release/4.0.20 release/4.0.22 release/4.0.23 release/4.0.24 release/4.0.25 release/4.0.26 release/4.0.27 release/4.0.28 release/4.0.29 release/4.0.30 release/4.0.32 release/4.0.33 release/4.0.34 release/4.0.35 release/4.0.36 release/4.0.37 release/4.0.38 release/4.0.39 release/4.0.4 release/4.0.40 release/4.0.41 release/4.0.5 release/4.0.6 release/4.0.7 release/4.0.8 release/4.0.9"
+
+eol="$tagsEM $tagsADPR $tagsRX $tags40old"
+
+rmtags() {
+  for list in $1; do
+    for tag in $list; do git tag -d $tag  2>/dev/null; done
+  done
+}
+
+rmtags "$eol"
+echo
+
+for tag in $(git tag); do
+  printf "Tag ${tag}: \t commit "
+  git show --oneline ${tag} |head -1|cut -f1 -d' '
+done
+
+#release/4.0.42 release/4.0.43 release/4.0.44 release/4.0.45
+#release/5.0.0 release/5.0.1 release/5.0.2

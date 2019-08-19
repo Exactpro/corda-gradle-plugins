@@ -24,7 +24,7 @@ echo
 
 for tag in $(git tag); do
   printf "Tag ${tag}: \t commit "
-  git show --oneline ${tag} |head -1|cut -f1 -d' '
+  git show --oneline --stat ${tag} |head -1|cut -f1 -d' '
 done
 
 #release/4.0.42 release/4.0.43 release/4.0.44 release/4.0.45

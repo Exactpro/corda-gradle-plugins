@@ -2,7 +2,19 @@
 
 ## Version 5
 
+### Version 5.0.5
+
+### Version 5.0.4
+
+* `cordformation`: remove hard dependency on java 1.8 for macos in runnodes (and allow for usage of JAVA_HOME if set)
+
+* `cordformation`: add support for classifier (eg. jdk11) in detection of corda runtime artifacts (eg. corda.jar, test-server.jar).  
+
 ### Version 5.0.3
+
+* `quasar-utils`: Add `excludeClassLoaders` option to the `quasar` extension. This option requires Quasar 0.7.12_r3 and above, excluding 0.8.0.
+
+* `cordformation`: The `corda-webserver` component has been renamed to `corda-testserver.`
 
 * `jar-filter`: Support for byte-code compiled by Kotlin >= 1.3.40 (See [KT-30289](https://youtrack.jetbrains.com/issue/KT-30289)).
 
